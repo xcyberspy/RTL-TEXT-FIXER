@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RTL TEXT FIXER</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 56'%3E%3Crect width='56' height='56' rx='14' fill='%23F4C430'/%3E%3Ctext x='17' y='31' font-size='24' font-weight='700' text-anchor='middle' fill='%232332B0' font-family='sans-serif'%3E%D8%B9%3C/text%3E%3Ctext x='39' y='30' font-size='22' font-weight='700' text-anchor='middle' fill='%232332B0' font-family='sans-serif'%3EA%3C/text%3E%3Cpath d='M14 40h28M18 36l-4 4 4 4M38 36l4 4-4 4' fill='none' stroke='%232332B0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&family=Reem+Kufi:wght@600;700&display=swap">
+<style>
+:root{--paper:#edeff7;--card:#fff;--ink:#12152f;--mute:#575c7e;--line:#d3d7ea;--blue:#2332b0;--on:#fff;--sun:#f4c430;--er:#b3261e;--ok:#1b7a4b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#0e1127;--card:#161a3a;--ink:#e8eafb;--mute:#9da3ce;--line:#2a3066;--blue:#8b9bff;--on:#0e1127;--er:#ff8a80;--ok:#6fdc9c}}
+:root[data-theme=dark]{--paper:#0e1127;--card:#161a3a;--ink:#e8eafb;--mute:#9da3ce;--line:#2a3066;--blue:#8b9bff;--on:#0e1127;--er:#ff8a80;--ok:#6fdc9c}
+*{box-sizing:border-box}html{font-size:clamp(15px,.8vw + 9px,19px);scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 "IBM Plex Sans Arabic",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:74rem;margin:0 auto;padding:clamp(10px,2vw,28px) clamp(10px,2vw,28px) 0}
+.hero{background:#2332b0;color:#fff;border-radius:28px;padding:28px 22px;display:grid;gap:22px;align-items:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset-inline-end:-60px;top:-60px;width:200px;height:200px;border-radius:50%;background:#f4c430;opacity:.16}
+@media(min-width:860px){.hero{padding:40px}}
+.brand{display:flex;align-items:center;gap:14px}.lg{width:64px;height:64px;flex:none}.lg .b{fill:#f4c430}.lg text{fill:#2332b0}
+h1{margin:0;font:700 clamp(1.9rem,6vw,3rem)/1.05 "Reem Kufi","IBM Plex Sans Arabic",sans-serif;letter-spacing:.02em}
+.sub{margin:14px 0 0;font-size:1.05rem;max-width:34ch;opacity:.95}
+@media(prefers-reduced-motion:no-preference){.hero{animation:in .7s ease-out both}@keyframes in{from{opacity:0;transform:translateY(8px)}}}
+.work{display:grid;gap:14px;margin:14px 0}@media(min-width:860px){.work{grid-template-columns:1fr 1fr}}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px}
+.bar{display:flex;align-items:center;gap:10px;margin-bottom:10px;min-height:40px}
+.bar h2,.bar label{margin:0;font-size:1.05rem;font-weight:600;flex:1}.bar span{font-size:.88rem;color:var(--mute)}
+textarea,.out{width:100%;min-height:260px;font:inherit;font-size:1.1rem;line-height:1.9;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--paper);color:var(--ink)}
+textarea,.out{height:clamp(360px,calc(100vh - 11rem),1000px);height:clamp(360px,calc(100dvh - 11rem),1000px);overflow-y:scroll}
+textarea::-webkit-scrollbar,.out::-webkit-scrollbar{width:8px}textarea::-webkit-scrollbar-track,.out::-webkit-scrollbar-track{background:var(--line);border-radius:10px}textarea::-webkit-scrollbar-thumb,.out::-webkit-scrollbar-thumb{background:var(--mute);border-radius:8px;min-height:80px}
+textarea{resize:none;display:block;direction:ltr;unicode-bidi:plaintext}.out{direction:ltr;white-space:pre-wrap;overflow-wrap:anywhere}
+.out div{min-height:1.9em;text-align:start}
+button{font:inherit;font-weight:600;min-height:40px;padding:6px 18px;border-radius:99px;border:1.5px solid var(--blue);background:var(--blue);color:var(--on);cursor:pointer}
+button.ghost{background:transparent;color:var(--blue)}button:active{transform:scale(.97)}
+button:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.er{color:var(--er)}#over{margin:0 0 14px;padding:10px 14px;border-radius:12px;border:1px solid var(--er)}
+.info{padding:10px 8px 6px;text-align:center}.info h2{font:700 1.4rem/1.2 "Reem Kufi","IBM Plex Sans Arabic",sans-serif;margin:0 0 8px}
+.info>p:not(.priv){margin:0 auto;max-width:62ch;color:var(--mute)}
+.flow{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px}
+.flow li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;padding-top:12px;border-top:2px solid var(--blue)}
+.flow svg,.priv svg{width:26px;height:26px;flex:none;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.flow b{display:block}.priv b{color:var(--ink);font-size:1rem}
+.priv svg{width:26px;height:26px}.flow span{color:var(--mute);font-size:.92rem}
+.priv{display:flex;gap:10px;align-items:center;color:var(--mute);font-size:.92rem;margin:0;justify-content:center;flex-direction:column;text-align:center;gap:6px;padding:14px 0;border-bottom:2px solid var(--blue)}
+.flow li:last-child{border-bottom:2px solid var(--blue);padding-bottom:12px}
+@media(min-width:1000px){.hero{padding:clamp(40px,4vw,64px) clamp(40px,5vw,72px);border-radius:32px}.sub{font-size:1.15rem}.pane{padding:18px}.info{padding:28px 12px 8px}.info h2{font-size:1.7rem}}
+footer{text-align:center;color:var(--mute);font-size:.85rem;padding:22px 0 26px}
+</style></head><body><main>
+<header class="hero">
+<div><div class="brand"><svg class="lg" viewBox="0 0 56 56" role="img" aria-label="RTL TEXT FIXER logo"><rect class="b" width="56" height="56" rx="14"/><text x="17" y="30" font-size="24" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">ع</text><text x="39" y="30" font-size="22" font-weight="700" text-anchor="middle" font-family="system-ui,sans-serif">A</text><path d="M14 40h28M18 36l-4 4 4 4M38 36l4 4-4 4" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:#2332b0"/></svg><h1>RTL TEXT FIXER</h1></div>
+<p class="sub">RTL Arabic text fixer. Paste Arabic mixed with English, numbers or links and get it back in the right order.</p></div>
+</header>
+
+<section class="work">
+<div class="pane"><div class="bar"><label for="in">Input</label><span id="wc">0 / 20,000 words</span><button id="clear" class="ghost">Clear</button></div>
+<textarea id="in" dir="ltr" spellcheck="false"></textarea></div>
+<div class="pane"><div class="bar"><h2>Output</h2><span id="rn" hidden>Reversed text restored</span><button id="copy">Copy</button></div>
+<div id="af" class="out" dir="rtl"></div></div>
+</section>
+<p id="over" class="er" hidden>This text is over the 20,000-word limit. Nothing was cut, but the result is paused. Shorten the text to continue.</p>
+
+<section class="info"><h2>What it does</h2>
+<p>Arabic text often breaks when it sits next to English words, numbers, links and punctuation. RTL Arabic Text Fixer uses your browser's Unicode bidirectional support to set each line's direction and keep the English, numbers and URLs where they belong.</p>
+<ol class="flow">
+<li><svg viewBox="0 0 24 24"><path d="M9 4h6v3H9zM7 5H5v15h14V5h-2"/><path d="M9 12h6M9 16h4"/></svg><div><b>Paste</b><span>Add your text in the input box.</span></div></li>
+<li><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.7L18.5 9.5 13.8 11.3 12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg><div><b>Check the result</b><span>The fixed version appears under Output.</span></div></li>
+<li><svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><div><b>Copy</b><span>Press Copy and paste it anywhere.</span></div></li>
+</ol>
+<p class="priv"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><b>Privacy</b>Everything runs in your browser. Your text is never uploaded.</p></section>
+<footer>© 2026 xcyberspy. All rights reserved.</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id),MAX=20000;
+const AR='\\u0590-\\u08FF\\uFB1D-\\uFDFF\\uFE70-\\uFEFF';
+const STRONG=new RegExp('(['+AR+'])|[A-Za-z\\u00C0-\\u024F\\u0370-\\u04FF]');
+const reAR=new RegExp('['+AR+']+(?:[ \\u00A0]+['+AR+']+)*','g');
+const reLT=new RegExp('https?:\\/\\/[^\\s'+AR+']+|[\\w.+-]+@[\\w-]+(?:\\.[\\w-]+)+|[A-Za-z0-9][A-Za-z0-9_.+#%\\/:\\-,@&=?]*(?: +[A-Za-z0-9][A-Za-z0-9_.+#%\\/:\\-,@&=?]*)*','g');
+const RTLC=new RegExp('['+AR+']');
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const words=t=>(t.match(/\S+/g)||[]).length;
+const strong=l=>{const m=STRONG.exec(l);return m?(m[1]?'rtl':'ltr'):null};
+function frag(line,dir){const re=dir==='rtl'?reLT:reAR,d=dir==='rtl'?'ltr':'rtl';let o='',last=0,m;re.lastIndex=0;
+ while((m=re.exec(line))){let s=m[0],t='';if(d==='ltr'){const c=s.replace(/[.,:\-]+$/,'');t=s.slice(c.length);s=c}
+  o+=esc(line.slice(last,m.index))+(s?'<bdi dir="'+d+'">'+esc(s)+'</bdi>':'')+esc(t);last=m.index+m[0].length}
+ return o+esc(line.slice(last))}
+function view(t){let prev='ltr';return t.split('\n').map(l=>{const d=RTLC.test(l)?'rtl':(strong(l)||prev);prev=d;return '<div dir="'+d+'">'+frag(l,d)+'</div>'}).join('')}
+const ta=$('in');let tm;
+function upd(){const n=words(ta.value);$('wc').textContent=n.toLocaleString('en')+' / 20,000 words';$('wc').className=n>MAX?'er':'';
+ $('over').hidden=n<=MAX;clearTimeout(tm);tm=setTimeout(run,250)}
+function run(){const t=ta.value;if(words(t)>MAX){$('af').textContent='';return}
+ const f=autoFix(t);$('af').innerHTML=t?view(f):'';$('rn').hidden=!rev}
+ta.oninput=upd;
+const CTL=/[\u200E\u200F\u061C\u202A-\u202E\u2066-\u2069]/;
+function fixedText(t){return t.split('\n').map(l=>{if(!RTLC.test(l)||CTL.test(l))return l;
+ return '\u200F'+l.replace(reLT,s=>{const c=s.replace(/[.,:\-]+$/,'');return '\u2066'+c+'\u2069'+s.slice(c.length)})}).join('\n')}
+async function cp(){const b=$('copy'),x=autoFix(ta.value);let ok=false;if(words(x)>MAX){b.textContent='Over limit';return setTimeout(()=>b.textContent='Copy',1800)}
+const p=fixedText(x);try{if(window.ClipboardItem)await navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([view(x)],{type:'text/html'}),'text/plain':new Blob([p],{type:'text/plain'})})]);else await navigator.clipboard.writeText(p);ok=true}catch(e){try{await navigator.clipboard.writeText(p);ok=true}catch(e2){const t=document.createElement('textarea');t.value=p;t.style.cssText='position:fixed;opacity:0';document.body.appendChild(t);t.select();try{ok=document.execCommand('copy')}catch(_){}t.remove()}}
+b.textContent=ok?'Copied \u2713':'Copy blocked';setTimeout(()=>b.textContent='Copy',1800)}
+$('copy').onclick=cp;
+$('clear').onclick=()=>{ta.value='';upd()};
+const CTL2=/[\u200E\u200F\u061C\u202A-\u202E\u2066-\u2069]/g;
+const reRun=/[.\-]*[A-Za-z0-9][A-Za-z0-9_.+#%\/:\-,@&=?]*(?: +[A-Za-z0-9][A-Za-z0-9_.+#%\/:\-,@&=?]*)*/g;
+const gr=s=>Array.from(s);
+function unrev(t){return t.replace(CTL2,'').split('\n').map(l=>{if(!RTLC.test(l))return l;const R=[];let last=0,m;reRun.lastIndex=0;
+ while((m=reRun.exec(l))){if(m.index>last)R.push([0,l.slice(last,m.index)]);R.push([1,m[0]]);last=m.index+m[0].length}
+ if(last<l.length)R.push([0,l.slice(last)]);
+ return R.reverse().map(([k,s])=>k?s:gr(s).reverse().join('')).join('')}).join('\n')}
+const COMMON=new Set('في من على إلى الى أن عن مع هذا هذه التي الذي كان ذلك بعد أو قد عند غير لا لم لن أي ثم حتى بين إذا ما هو هي'.split(' '));
+function sc(t){const w=t.replace(/[\u064B-\u065F\u0670\u0640]/g,'').match(/[\u0621-\u064A]+/g)||[];let f=0,r=0;
+ for(const x of w){if(COMMON.has(x))f++;if(COMMON.has([...x].reverse().join('')))r++;if(x.length>3){if(x.startsWith('ال'))f++;if(x.endsWith('لا'))r++}}return{f,r}}
+let rev=false;
+function autoFix(t){rev=false;return t.split('\n').map(l=>{if(!RTLC.test(l))return l;const s=sc(l);if(s.r>=2&&s.r>=2*s.f){rev=true;return unrev(l)}return l}).join('\n')}
+upd();
+</script></body></html>
