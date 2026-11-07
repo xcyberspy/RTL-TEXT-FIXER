@@ -8,7 +8,7 @@
 
 [https://xcyberspy.github.io/RTL-TEXT-FIXER/](https://xcyberspy.github.io/RTL-TEXT-FIXER/)
 
-<h2>Project Screenshot:</h2>
+<h2>Project Screenshot :</h2>
 
 
 <p align="center" href="https://ibb.co/dwMt3DbX"><img src="https://i.ibb.co/v6qhrksf/RTL-TEXT-FIXER.png" alt="RTL-TEXT-FIXER" border="0"</p>
@@ -28,7 +28,7 @@ Here're some of the project's best features:
 *   🧹 Clear button: empties the input in one tap.
 *   🔄 Reversed-text recovery: detects Arabic stored backwards and restores it automatically with a "Reversed text restored" notice. Detection is heuristic based on common Arabic words.
 
-<h2>🛠️ Installation Steps:</h2>
+<h2>🛠️ Installation Steps :</h2>
 
 <p>1. Clone the repository:</p>
 
